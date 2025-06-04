@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantity Selector</title>
+    <style>
+        .quantity-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .qty-btn {
+            width: 40px;
+            height: 40px;
+            border: 1px solid #ccc;
+            background: #f8f8f8;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .qty-btn:hover {
+            background: #e0e0e0;
+        }
+        
+        .qty-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        
+        .quantity-display {
+            font-size: 20px;
+            font-weight: bold;
+            min-width: 30px;
+        }
+        
+        .total-price {
+            font-size: 24px;
+            color: #e74c3c;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="quantity-container">
+        <h2>Product Quantity Selector</h2>
+        <div class="quantity-selector">
+            <button class="qty-btn" id="decrease">-</button>
+            <span class="quantity-display" id="quantity">1</span>
+            <button class="qty-btn" id="increase">+</button>
+        </div>
+        <div class="total-price" id="totalPrice">Total: ₹299</div>
+    </div>
+
+    <script>
+        let quantity = 1;
+        const pricePerItem = 299;
+        const minQty = 1;
+        const maxQty = 5;
+        
+        const quantityDisplay = document.getElementById('quantity');
+        const totalPriceDisplay = document.getElementById('totalPrice');
+        const decreaseBtn = document.getElementById('decrease');
+        const increaseBtn = document.getElementById('increase');
+        
+        function updateDisplay() {
+            quantityDisplay.textContent = quantity;
+            const totalPrice = quantity * pricePerItem;
+            totalPriceDisplay.textContent = `Total: ₹${totalPrice}`;
+            
+            // Update button states
+            decreaseBtn.disabled = quantity <= minQty;
+            increaseBtn.disabled = quantity >= maxQty;
+        }
+        
+        decreaseBtn.addEventListener('click', () => {
+            if (quantity > minQty) {
+                quantity--;
+                updateDisplay();
+            }
+        });
+        
+        increaseBtn.addEventListener('click', () => {
+            if (quantity < maxQty) {
+                quantity++;
+                updateDisplay();
+            }
+        });
+        
+        // Initialize display
+        updateDisplay();
+    </script>
+</body>
+</html>
