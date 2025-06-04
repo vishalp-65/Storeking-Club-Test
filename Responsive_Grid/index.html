@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Grid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .grid-card {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .grid-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            border-color: #3498db;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 150px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: #888;
+        }
+        
+        .card-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .card-price {
+            font-size: 18px;
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        /* Tablet: 2 columns */
+        @media (max-width: 1024px) {
+            .grid-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Mobile: 1 column */
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="grid-container">
+            <div class="grid-card">
+                <div class="card-image">Product 1</div>
+                <div class="card-title">iPhone 15</div>
+                <div class="card-price">₹79,999</div>
+            </div>
+            <div class="grid-card">
+                <div class="card-image">Product 2</div>
+                <div class="card-title">Samsung S24</div>
+                <div class="card-price">₹65,999</div>
+            </div>
+            <div class="grid-card">
+                <div class="card-image">Product 3</div>
+                <div class="card-title">MacBook Air</div>
+                <div class="card-price">₹99,999</div>
+            </div>
+            <div class="grid-card">
+                <div class="card-image">Product 4</div>
+                <div class="card-title">iPad Pro</div>
+                <div class="card-price">₹89,999</div>
+            </div>
+            <div class="grid-card">
+                <div class="card-image">Product 5</div>
+                <div class="card-title">AirPods Pro</div>
+                <div class="card-price">₹24,999</div>
+            </div>
+            <div class="grid-card">
+                <div class="card-image">Product 6</div>
+                <div class="card-title">Apple Watch</div>
+                <div class="card-price">₹45,999</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
